@@ -1,6 +1,5 @@
 package views.main;
 
-import java.awt.Color;
 import javax.swing.JComponent;
 import views.event.EventMenuSelected;
 import views.form.Form_AddWord;
@@ -14,8 +13,9 @@ public class Main extends javax.swing.JFrame {
     private Form_AddWord addWord;
     private Form_Statistic statistic;
     public Main() {
+        setUndecorated(false);
+//        setBackground(new Color(0, 0, 0, 0));
         initComponents();
-        setBackground(new Color(0, 0, 0, 0));
         
         home = new Form_Home();
         favorite = new Form_Favorite();
@@ -57,7 +57,6 @@ public class Main extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         panelBorder1.setBackground(new java.awt.Color(248, 248, 248));
 
@@ -79,16 +78,7 @@ public class Main extends javax.swing.JFrame {
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(panelBorder1, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);

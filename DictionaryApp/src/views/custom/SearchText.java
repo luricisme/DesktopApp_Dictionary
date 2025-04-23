@@ -33,5 +33,4 @@ public class SearchText extends JTextField {
             g.drawString(hint, ins.left, h / 2 + fm.getAscent() / 2 - 2);
         }
     }
-
 }
