@@ -3,6 +3,8 @@ package views.component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import javax.swing.JComboBox;
+import views.custom.SearchText;
 
 public class Header extends javax.swing.JPanel {
     public Header() {
@@ -15,14 +17,14 @@ public class Header extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        searchText1 = new views.custom.SearchText();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        searchText = new views.custom.SearchText();
+        searchOptions = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/views/icon/search.png"))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anh - Việt", "Việt - Anh" }));
+        searchOptions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anh - Việt", "Việt - Anh" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -32,15 +34,15 @@ public class Header extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchText1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchText, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, 0, 92, Short.MAX_VALUE))
+                .addComponent(searchOptions, 0, 92, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(searchText1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(searchOptions, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(searchText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -53,10 +55,18 @@ public class Header extends javax.swing.JPanel {
         g2.fillRect(getWidth() - 25, getHeight() - 25, getWidth(), getHeight());
         super.paintComponent(grphcs); 
     }
+    
+    public SearchText getSearchText(){
+        return this.searchText;
+    }
+    
+    public JComboBox<String> getSearchOptions(){
+        return this.searchOptions;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private views.custom.SearchText searchText1;
+    private javax.swing.JComboBox<String> searchOptions;
+    private views.custom.SearchText searchText;
     // End of variables declaration//GEN-END:variables
 }
