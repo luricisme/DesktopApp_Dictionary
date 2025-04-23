@@ -1,12 +1,51 @@
 package views.main;
 
 import java.awt.Color;
+import javax.swing.JComponent;
+import views.event.EventMenuSelected;
+import views.form.Form_AddWord;
+import views.form.Form_Favorite;
+import views.form.Form_Home;
+import views.form.Form_Statistic;
 
 public class Main extends javax.swing.JFrame {
+    private Form_Home home;
+    private Form_Favorite favorite;
+    private Form_AddWord addWord;
+    private Form_Statistic statistic;
     public Main() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
-        menu1.initMoving(Main.this);
+        
+        home = new Form_Home();
+        favorite = new Form_Favorite();
+        addWord = new Form_AddWord();
+        statistic = new Form_Statistic();
+        
+        menu.initMoving(Main.this);
+        menu.addEventMenuSelected(new EventMenuSelected(){
+            @Override
+            public void selected(int index) {
+                if(index == 0){
+                    setForm(home);
+                } else if(index == 1){
+                    setForm(favorite);
+                } else if(index == 2){
+                    setForm(addWord);
+                } else if(index == 3){
+                    setForm(statistic);
+                }
+            }
+            
+        });
+        setForm(new Form_Home());
+    }
+    
+    private void setForm(JComponent com){
+        mainPanel.removeAll();
+        mainPanel.add(com);
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }
 
     @SuppressWarnings("unchecked")
@@ -14,33 +53,30 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         panelBorder1 = new views.custom.PanelBorder();
-        menu1 = new views.component.Menu();
-        header1 = new views.component.Header();
+        menu = new views.component.Menu();
+        mainPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         panelBorder1.setBackground(new java.awt.Color(248, 248, 248));
 
+        mainPanel.setOpaque(false);
+        mainPanel.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout panelBorder1Layout = new javax.swing.GroupLayout(panelBorder1);
         panelBorder1.setLayout(panelBorder1Layout);
         panelBorder1Layout.setHorizontalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE))
         );
         panelBorder1Layout.setVerticalGroup(
             panelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addComponent(menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelBorder1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(header1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -51,7 +87,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBorder1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelBorder1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -67,8 +103,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private views.component.Header header1;
-    private views.component.Menu menu1;
+    private javax.swing.JPanel mainPanel;
+    private views.component.Menu menu;
     private views.custom.PanelBorder panelBorder1;
     // End of variables declaration//GEN-END:variables
 }

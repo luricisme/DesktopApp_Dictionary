@@ -3,17 +3,26 @@ package views.custom;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
+import views.event.EventMenuSelected;
 import views.model.Model_Menu;
 
 public class ListMenu<E extends Object> extends JList<E> {
 
     private final DefaultListModel model;
-    private int selectedIndex = -1;
+    private int selectedIndex = 0;
+    private int overIndex = 0;
+    
+    private EventMenuSelected event;
+    
+    public void addEventMenuSelected(EventMenuSelected event){
+        this.event = event;
+    }
     
     public ListMenu() {
         model = new DefaultListModel();
@@ -28,11 +37,41 @@ public class ListMenu<E extends Object> extends JList<E> {
                         Model_Menu menu = (Model_Menu)o;
                         if(menu.getType()==Model_Menu.MenuType.MENU){
                             selectedIndex = index;
+                            if(event != null){
+                                event.selected(index);
+                            }
                         }
                     } else{
                         selectedIndex = index;
                     }
                     repaint();
+                }
+            }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+                overIndex = -1;
+                repaint();
+            }
+            
+            
+        });
+        
+        addMouseMotionListener(new MouseMotionAdapter(){
+            @Override
+            public void mouseMoved(MouseEvent me) {
+                int index = locationToIndex(me.getPoint());
+                if(index != overIndex){
+                    Object o = model.getElementAt(index);
+                    if(o instanceof Model_Menu){
+                        Model_Menu menu = (Model_Menu)o;
+                        if(menu.getType() == Model_Menu.MenuType.MENU){
+                            overIndex = index;
+                        } else{
+                            overIndex = -1;
+                        }
+                        repaint();
+                    }
                 }
             }
             
@@ -52,6 +91,7 @@ public class ListMenu<E extends Object> extends JList<E> {
                 }
                 MenuItem item = new MenuItem(data);
                 item.setSelected(selectedIndex == index);
+                item.setOver(overIndex == index);
                 return item;
             }
         };
