@@ -46,7 +46,7 @@ public class StatisticController {
         }
 
         Map<String, Integer> data = statDao.getInformation(startDate, endDate);
-        System.out.println("data: " + data);
+        System.out.println("Data: " + data);
 
         DefaultTableModel model = new DefaultTableModel();
         if (model.getRowCount() > 0) {

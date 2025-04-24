@@ -8,6 +8,8 @@ public class Form_Home extends javax.swing.JPanel {
 
     public Form_Home() {
         initComponents();
+        deleteBtn.setIcon(null);
+        favoriteBtn.setIcon(null);
         if (homeController == null) {
             homeController = new HomeController(searchBar.getSearchText(), searchBar.getSearchOptions(), wordLabel, meanTextArea, favoriteBtn, deleteBtn);
         }

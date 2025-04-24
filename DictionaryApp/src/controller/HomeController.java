@@ -2,6 +2,7 @@ package controller;
 
 import dao.DictStatisticDAO;
 import dao.DictionaryDAO;
+import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -41,6 +42,8 @@ public class HomeController {
         dictDao = new DictionaryDAO("./src/data/Anh_Viet.xml");
         favDao = new DictionaryDAO("./src/data/Favorite.xml");
         statDao = new DictStatisticDAO("./src/data/Statistic.xml");
+
+        searchOptions.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         searchOptions.addActionListener(e -> {
             String selected = (String) searchOptions.getSelectedItem();
             if ("Anh - Việt".equals(selected)) {
@@ -78,7 +81,7 @@ public class HomeController {
 //                }
 //            }
 //        });
-
+        favoriteBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         favoriteBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -93,7 +96,7 @@ public class HomeController {
                 if (favDao.findWord(word)) {
                     boolean removed = favDao.deleteWord(word);
                     if (removed) {
-                        favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_black.png")); 
+                        favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_black.png"));
 //                        JOptionPane.showMessageDialog(null, "Đã xóa khỏi mục yêu thích.");
                     } else {
                         JOptionPane.showMessageDialog(null, "Lỗi khi xóa khỏi yêu thích.");
@@ -101,7 +104,7 @@ public class HomeController {
                 } else {
                     boolean success = favDao.addWord(word, meaning);
                     if (success) {
-                        favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_red.png")); 
+                        favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_red.png"));
 //                        JOptionPane.showMessageDialog(null, "Đã thêm vào mục yêu thích.");
                     } else {
                         JOptionPane.showMessageDialog(null, "Lỗi khi thêm vào yêu thích.");
@@ -110,6 +113,7 @@ public class HomeController {
             }
         });
 
+        deleteBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         deleteBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -141,10 +145,18 @@ public class HomeController {
         String word = searchText.getText().trim();
         if (!word.isEmpty()) {
             String meaning = dictDao.findMeaning(word);
+            if (meaning == null) {
+                deleteBtn.setIcon(null);
+                favoriteBtn.setIcon(null);
+                wordLabel.setText(word);
+                meanTextArea.setText("Không tìm thấy từ này");
+                return;
+            }
             wordLabel.setText(word);
-            meanTextArea.setText(meaning != null ? meaning : "Không tìm thấy từ.");
+            meanTextArea.setText(meaning);
             Date date = new Date();
             statDao.addInformation(word, meaning, date);
+            deleteBtn.setIcon(new ImageIcon("./src/views/icon/delete.png"));
             if (favDao.findWord(word)) {
                 favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_red.png"));
             } else {

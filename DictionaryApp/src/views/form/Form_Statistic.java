@@ -61,32 +61,31 @@ public class Form_Statistic extends javax.swing.JPanel {
                 .addGroup(titleLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(endDateTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                     .addComponent(endDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                .addGap(85, 85, 85)
                 .addComponent(findBtn)
-                .addGap(125, 125, 125))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         titleLabelLayout.setVerticalGroup(
             titleLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titleLabelLayout.createSequentialGroup()
                 .addComponent(titleText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(titleLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(5, 5, 5)
+                .addGroup(titleLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(titleLabelLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addGroup(titleLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(startDateTitle)
                             .addComponent(endDateTitle))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(titleLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(startDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(endDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(titleLabelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(findBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 24, Short.MAX_VALUE))
+                        .addGroup(titleLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(startDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                            .addComponent(endDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(findBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         add(titleLabel, java.awt.BorderLayout.PAGE_START);
 
+        tableInfo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         tableInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -96,6 +95,8 @@ public class Form_Statistic extends javax.swing.JPanel {
             }
         ));
         tableInfo.setOpaque(false);
+        tableInfo.setRowHeight(30);
+        tableInfo.setRowMargin(2);
         tableInfo.setSelectionBackground(new java.awt.Color(255, 255, 255));
         tableInfo.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableInfo);

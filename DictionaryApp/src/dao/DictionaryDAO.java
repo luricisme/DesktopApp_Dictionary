@@ -53,7 +53,7 @@ public class DictionaryDAO {
     // Find meaning
     public String findMeaning(String word) {
         Map<String, String> dict = getAllWords();
-        return dict.getOrDefault(word, "Không tìm thấy từ này");
+        return dict.getOrDefault(word, null);
     }
 
     // Find word
