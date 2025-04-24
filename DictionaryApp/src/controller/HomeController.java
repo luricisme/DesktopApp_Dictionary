@@ -1,10 +1,12 @@
 package controller;
 
+import dao.DictStatisticDAO;
 import dao.DictionaryDAO;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -16,6 +18,7 @@ public class HomeController {
 
     private DictionaryDAO dictDao;
     private DictionaryDAO favDao;
+    private DictStatisticDAO statDao;
     private SearchText searchText;
     private JLabel wordLabel;
     private JTextArea meanTextArea;
@@ -37,6 +40,7 @@ public class HomeController {
 
         dictDao = new DictionaryDAO("./src/data/Anh_Viet.xml");
         favDao = new DictionaryDAO("./src/data/Favorite.xml");
+        statDao = new DictStatisticDAO("./src/data/Statistic.xml");
         searchOptions.addActionListener(e -> {
             String selected = (String) searchOptions.getSelectedItem();
             if ("Anh - Việt".equals(selected)) {
@@ -139,6 +143,8 @@ public class HomeController {
             String meaning = dictDao.findMeaning(word);
             wordLabel.setText(word);
             meanTextArea.setText(meaning != null ? meaning : "Không tìm thấy từ.");
+            Date date = new Date();
+            statDao.addInformation(word, meaning, date);
             if (favDao.findWord(word)) {
                 favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_red.png"));
             } else {

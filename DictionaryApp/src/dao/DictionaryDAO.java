@@ -2,11 +2,9 @@ package dao;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.dom4j.*;
 import org.dom4j.io.OutputFormat;
@@ -130,12 +128,12 @@ public class DictionaryDAO {
     }
 
     // HELPER
-    private Document loadXML() throws Exception {
+    protected Document loadXML() throws Exception {
         SAXReader reader = new SAXReader();
         return reader.read(new File(xmlFilePath));
     }
 
-    private void saveXML(Document doc) throws Exception {
+    protected void saveXML(Document doc) throws Exception {
         OutputFormat format = OutputFormat.createPrettyPrint();
         XMLWriter writer = new XMLWriter(new FileWriter(xmlFilePath), format);
         writer.write(doc);

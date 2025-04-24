@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<statistic>
-    
-</statistic>
 
+<statistic> 
+  <record> 
+    <word>a</word>  
+    <meaning>Từ a trong bảng chữ cái</meaning>  
+    <count>2</count>  
+    <date>2025-04-24</date> 
+  </record>  
+  <record> 
+    <word>y</word>  
+    <meaning>@y /wai/ * danh từ, số nhiều Ys, Y's - y - (toán học) ẩn số y - vật hình Y</meaning>  
+    <count>1</count>  
+    <date>2025-04-24</date> 
+  </record>  
+  <record> 
+    <word>abcee</word>  
+    <meaning>Từ trong bảng chữ cái</meaning>  
+    <count>1</count>  
+    <date>2025-04-24</date> 
+  </record>  
+  <record> 
+    <word>hihi</word>  
+    <meaning>Không tìm thấy từ này</meaning>  
+    <count>1</count>  
+    <date>2025-04-24</date> 
+  </record>  
+  <record> 
+    <word>ahihi</word>  
+    <meaning>Không tìm thấy từ này</meaning>  
+    <count>1</count>  
+    <date>2025-04-24</date> 
+  </record>  
+  <record> 
+    <word>hehe</word>  
+    <meaning>Không tìm thấy từ này</meaning>  
+    <count>1</count>  
+    <date>2025-04-24</date> 
+  </record>  
+  <record>
+    <word>abc</word>
+    <meaning>@abc * danh từ - bảng chữ cái - khái niệm cơ sở, cơ sở - &lt;đsắt&gt; bảng chỉ đường theo ABC * danh từ - (vt của American Broadcasting Company) Công ty phát thanh truyền hình Mỹ - (vt của Australian Broadcasting Commission) Uy ban phát thanh truyền hình Uc Đại Lợi</meaning>
+    <count>1</count>
+    <date>2025-04-24</date>
+  </record>
+</statistic>
