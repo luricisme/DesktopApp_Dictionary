@@ -6,10 +6,6 @@
     <meaning>@a * excl - O; oh (exclamation of surprise, regret, ect.) =a, đồ chơi đẹp quá!+ Oh! What a nice toy! =a, tội nghiệp quá+Oh!What a pity! - By the way =a, còn một vấn đề này nữa +By the way, there's this one other question * noun - Acre (100 square meters)</meaning> 
   </record>  
   <record> 
-    <word>á</word>  
-    <meaning>@á * excl - Aah! Oof(expression of suffering) * noun - Asia =khối đại đông á+the New Order for greater East Asia =người châu á+an Asian * adj - Asian, Asiatic =Hiệp hội các nước đông nam á+Association of South-East Asian Nations (ASEAN)</meaning> 
-  </record>  
-  <record> 
     <word>à</word>  
     <meaning>@à * excl - Oh! (exclamation of surprise) =à, đẹp tuyệt nhỉ!+Oh, beautiful! - By the way =à này, tên anh ta là gì?+by the way, what's his name?</meaning> 
   </record>  
@@ -93749,8 +93745,12 @@
     <word>yếu tố</word>  
     <meaning>@yếu tố * noun - element, factor</meaning> 
   </record>  
+  <record> 
+    <word>ahaha</word>  
+    <meaning>Điệu cười</meaning> 
+  </record>  
   <record>
-    <word>ahaha</word>
+    <word>hihi</word>
     <meaning>Điệu cười</meaning>
   </record>
 </dictionary>

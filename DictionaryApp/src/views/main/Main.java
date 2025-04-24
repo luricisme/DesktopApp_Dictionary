@@ -12,6 +12,7 @@ public class Main extends javax.swing.JFrame {
     private Form_Favorite favorite;
     private Form_AddWord addWord;
     private Form_Statistic statistic;
+    
     public Main() {
         setUndecorated(false);
 //        setBackground(new Color(0, 0, 0, 0));
@@ -30,6 +31,7 @@ public class Main extends javax.swing.JFrame {
                     setForm(home);
                 } else if(index == 1){
                     setForm(favorite);
+                    favorite.updateFavoriteWords();
                 } else if(index == 2){
                     setForm(addWord);
                 } else if(index == 3){

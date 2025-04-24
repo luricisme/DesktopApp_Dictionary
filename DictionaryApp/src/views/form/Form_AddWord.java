@@ -39,9 +39,11 @@ public class Form_AddWord extends javax.swing.JPanel {
 
         titlePanel.setPreferredSize(new java.awt.Dimension(600, 100));
 
-        titleText.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        titleText.setBackground(new java.awt.Color(106, 225, 240));
+        titleText.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         titleText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titleText.setText("THÊM TỪ VÀO TỪ ĐIỂN");
+        titleText.setOpaque(true);
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -65,8 +67,10 @@ public class Form_AddWord extends javax.swing.JPanel {
 
         wordPanel.setLayout(new java.awt.BorderLayout());
 
+        wordTitle.setBackground(new java.awt.Color(253, 114, 114));
         wordTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         wordTitle.setText("Từ");
+        wordTitle.setOpaque(true);
         wordPanel.add(wordTitle, java.awt.BorderLayout.PAGE_START);
 
         wordTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -74,8 +78,10 @@ public class Form_AddWord extends javax.swing.JPanel {
 
         meanPanel.setLayout(new java.awt.BorderLayout());
 
+        meanTitle.setBackground(new java.awt.Color(253, 114, 114));
         meanTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         meanTitle.setText("Nghĩa của từ");
+        meanTitle.setOpaque(true);
         meanPanel.add(meanTitle, java.awt.BorderLayout.PAGE_START);
 
         meanTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -83,8 +89,10 @@ public class Form_AddWord extends javax.swing.JPanel {
 
         typePanel.setLayout(new java.awt.BorderLayout());
 
+        typeTitle.setBackground(new java.awt.Color(253, 114, 114));
         typeTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         typeTitle.setText("Loại từ điển");
+        typeTitle.setOpaque(true);
         typePanel.add(typeTitle, java.awt.BorderLayout.PAGE_START);
 
         typeOptions.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
