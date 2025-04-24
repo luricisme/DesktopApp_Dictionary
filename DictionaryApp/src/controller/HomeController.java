@@ -55,6 +55,25 @@ public class HomeController {
             }
         });
 
+//        favoriteBtn.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                String word = wordLabel.getText().trim();
+//                String meaning = meanTextArea.getText().trim();
+//
+//                if (word.isEmpty() || meaning.isEmpty()) {
+//                    JOptionPane.showMessageDialog(null, "Không có từ nào để thêm vào mục yêu thích!");
+//                    return;
+//                }
+//
+//                boolean success = favDao.addWord(word, meaning);
+//                if (success) {
+//                    favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_red.png"));
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Từ đã tồn tại trong mục yêu thích.");
+//                }
+//            }
+//        });
         favoriteBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -62,15 +81,26 @@ public class HomeController {
                 String meaning = meanTextArea.getText().trim();
 
                 if (word.isEmpty() || meaning.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Không có từ nào để thêm vào mục yêu thích!");
+                    JOptionPane.showMessageDialog(null, "Không có từ nào để xử lý!");
                     return;
                 }
 
-                boolean success = favDao.addWord(word, meaning);
-                if (success) {
-                    favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_red.png"));
+                if (favDao.findWord(word)) {
+                    boolean removed = favDao.deleteWord(word);
+                    if (removed) {
+                        favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_black.png")); 
+//                        JOptionPane.showMessageDialog(null, "Đã xóa khỏi mục yêu thích.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Lỗi khi xóa khỏi yêu thích.");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Từ đã tồn tại trong mục yêu thích.");
+                    boolean success = favDao.addWord(word, meaning);
+                    if (success) {
+                        favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_red.png")); 
+//                        JOptionPane.showMessageDialog(null, "Đã thêm vào mục yêu thích.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Lỗi khi thêm vào yêu thích.");
+                    }
                 }
             }
         });
@@ -79,15 +109,15 @@ public class HomeController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 String word = wordLabel.getText().trim();
-                if(favDao.findWord(word)){
+                if (favDao.findWord(word)) {
                     boolean success_fav = favDao.deleteWord(word);
-                    if(success_fav){
+                    if (success_fav) {
                         System.out.println("Deleted from favorite");
-                    } else{
+                    } else {
                         System.out.println("Error while deleting word from favorite");
                     }
-                } 
-                
+                }
+
                 boolean success_dict = dictDao.deleteWord(word);
                 if (success_dict) {
                     JOptionPane.showMessageDialog(null, "Từ đã bị xóa khỏi từ điển");
