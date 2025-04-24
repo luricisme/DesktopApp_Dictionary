@@ -3,11 +3,14 @@ package views.form;
 import controller.HomeController;
 
 public class Form_Home extends javax.swing.JPanel {
+
     private HomeController homeController;
 
     public Form_Home() {
         initComponents();
-        homeController = new HomeController(searchBar.getSearchText(), searchBar.getSearchOptions(), wordLabel, meanTextArea, favoriteBtn, deleteBtn);
+        if (homeController == null) {
+            homeController = new HomeController(searchBar.getSearchText(), searchBar.getSearchOptions(), wordLabel, meanTextArea, favoriteBtn, deleteBtn);
+        }
     }
 
     @SuppressWarnings("unchecked")

@@ -79,12 +79,21 @@ public class HomeController {
             @Override
             public void mouseClicked(MouseEvent e) {
                 String word = wordLabel.getText().trim();
-
-                boolean success = dictDao.deleteWord(word);
-                if (success) {
+                if(favDao.findWord(word)){
+                    boolean success_fav = favDao.deleteWord(word);
+                    if(success_fav){
+                        System.out.println("Deleted from favorite");
+                    } else{
+                        System.out.println("Error while deleting word from favorite");
+                    }
+                } 
+                
+                boolean success_dict = dictDao.deleteWord(word);
+                if (success_dict) {
                     JOptionPane.showMessageDialog(null, "Từ đã bị xóa khỏi từ điển");
                     wordLabel.setText("Word");
                     meanTextArea.setText("Meaning");
+                    favoriteBtn.setIcon(new ImageIcon("./src/views/icon/love_black.png"));
                 } else {
                     JOptionPane.showMessageDialog(null, "Đã xảy ra lỗi khi xóa từ");
                 }
