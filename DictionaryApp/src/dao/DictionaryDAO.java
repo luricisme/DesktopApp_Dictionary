@@ -55,6 +55,12 @@ public class DictionaryDAO {
         return dict.getOrDefault(word, "Không tìm thấy từ này");
     }
     
+    // Find word
+    public boolean findWord(String word) {
+        Map<String, String> dict = getAllWords();
+        return dict.containsKey(word);
+    }
+    
     // Add word
     public boolean addWord(String word, String meaning){
         try{
